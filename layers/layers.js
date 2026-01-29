@@ -1,20 +1,9 @@
 ol.proj.proj4.register(proj4);
-//ol.proj.get("EPSG:3857").setExtent([-20030367.425747, -7297230.072439, 19778291.695267, 4230870.641447]);
+//ol.proj.get("EPSG:4326").setExtent([-179.935842, -54.665576, 180.140603, 35.491457]);
 var wms_layers = [];
 
 
-        var lyr_Satellite_0 = new ol.layer.Tile({
-            'title': 'Satellite',
-            'opacity': 1.000000,
-            
-            
-            source: new ol.source.XYZ({
-            attributions: ' ',
-                url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'
-            })
-        });
-
-        var lyr_GoogleSatelliteHybrid_1 = new ol.layer.Tile({
+        var lyr_GoogleSatelliteHybrid_0 = new ol.layer.Tile({
             'title': 'Google Satellite Hybrid',
             'type':'base',
             'opacity': 1.000000,
@@ -25,53 +14,53 @@ var wms_layers = [];
                 url: 'https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}'
             })
         });
-var format_Centroids_2 = new ol.format.GeoJSON();
-var features_Centroids_2 = format_Centroids_2.readFeatures(json_Centroids_2, 
-            {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'});
-var jsonSource_Centroids_2 = new ol.source.Vector({
+var format_Centroids_1 = new ol.format.GeoJSON();
+var features_Centroids_1 = format_Centroids_1.readFeatures(json_Centroids_1, 
+            {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:4326'});
+var jsonSource_Centroids_1 = new ol.source.Vector({
     attributions: ' ',
 });
-jsonSource_Centroids_2.addFeatures(features_Centroids_2);
-cluster_Centroids_2 = new ol.source.Cluster({
+jsonSource_Centroids_1.addFeatures(features_Centroids_1);
+cluster_Centroids_1 = new ol.source.Cluster({
   distance: 30,
-  source: jsonSource_Centroids_2
+  source: jsonSource_Centroids_1
 });
-var lyr_Centroids_2 = new ol.layer.Vector({
+var lyr_Centroids_1 = new ol.layer.Vector({
                 declutter: false,
-                source:cluster_Centroids_2, 
-                style: style_Centroids_2,
+                source:cluster_Centroids_1, 
+                style: style_Centroids_1,
                 popuplayertitle: 'Centroids',
                 interactive: true,
-                title: '<img src="styles/legend/Centroids_2.png" /> Centroids'
+                title: '<img src="styles/legend/Centroids_1.png" /> Centroids'
             });
-var format_Collections_Point_3 = new ol.format.GeoJSON();
-var features_Collections_Point_3 = format_Collections_Point_3.readFeatures(json_Collections_Point_3, 
-            {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'});
-var jsonSource_Collections_Point_3 = new ol.source.Vector({
+var format_Collections_Point_2 = new ol.format.GeoJSON();
+var features_Collections_Point_2 = format_Collections_Point_2.readFeatures(json_Collections_Point_2, 
+            {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:4326'});
+var jsonSource_Collections_Point_2 = new ol.source.Vector({
     attributions: ' ',
 });
-jsonSource_Collections_Point_3.addFeatures(features_Collections_Point_3);
-cluster_Collections_Point_3 = new ol.source.Cluster({
+jsonSource_Collections_Point_2.addFeatures(features_Collections_Point_2);
+cluster_Collections_Point_2 = new ol.source.Cluster({
   distance: 30,
-  source: jsonSource_Collections_Point_3
+  source: jsonSource_Collections_Point_2
 });
-var lyr_Collections_Point_3 = new ol.layer.Vector({
+var lyr_Collections_Point_2 = new ol.layer.Vector({
                 declutter: false,
-                source:cluster_Collections_Point_3, 
-                style: style_Collections_Point_3,
+                source:cluster_Collections_Point_2, 
+                style: style_Collections_Point_2,
                 popuplayertitle: 'Collections_Point',
                 interactive: true,
-                title: '<img src="styles/legend/Collections_Point_3.png" /> Collections_Point'
+                title: '<img src="styles/legend/Collections_Point_2.png" /> Collections_Point'
             });
 
-lyr_Satellite_0.setVisible(true);lyr_GoogleSatelliteHybrid_1.setVisible(true);lyr_Centroids_2.setVisible(true);lyr_Collections_Point_3.setVisible(true);
-var layersList = [lyr_Satellite_0,lyr_GoogleSatelliteHybrid_1,lyr_Centroids_2,lyr_Collections_Point_3];
-lyr_Centroids_2.set('fieldAliases', {'qc_id': 'qc_id', 'id': 'id', 'eventid': 'eventid', 'siteareaid': 'siteareaid', 'createdbyid': 'createdbyid', 'updatedbyid': 'updatedbyid', 'status': 'status', 'lengthinmetres': 'lengthinmetres', 'widthinmetres': 'widthinmetres', 'itemisedpercentage': 'itemisedpercentage', 'litres': 'litres', 'kilos': 'kilos', 'externalid': 'externalid', 'createdon': 'createdon', 'updatedon': 'updatedon', });
-lyr_Collections_Point_3.set('fieldAliases', {'qc_id': 'qc_id', 'id': 'id', 'eventid': 'eventid', 'siteareaid': 'siteareaid', 'createdbyid': 'createdbyid', 'updatedbyid': 'updatedbyid', 'status': 'status', 'lengthinmetres': 'lengthinmetres', 'widthinmetres': 'widthinmetres', 'itemisedpercentage': 'itemisedpercentage', 'litres': 'litres', 'kilos': 'kilos', 'externalid': 'externalid', 'createdon': 'createdon', 'updatedon': 'updatedon', });
-lyr_Centroids_2.set('fieldImages', {'qc_id': '', 'id': '', 'eventid': '', 'siteareaid': '', 'createdbyid': '', 'updatedbyid': '', 'status': '', 'lengthinmetres': '', 'widthinmetres': '', 'itemisedpercentage': '', 'litres': '', 'kilos': '', 'externalid': '', 'createdon': '', 'updatedon': '', });
-lyr_Collections_Point_3.set('fieldImages', {'qc_id': '', 'id': '', 'eventid': '', 'siteareaid': '', 'createdbyid': '', 'updatedbyid': '', 'status': '', 'lengthinmetres': '', 'widthinmetres': '', 'itemisedpercentage': '', 'litres': '', 'kilos': '', 'externalid': '', 'createdon': '', 'updatedon': '', });
-lyr_Centroids_2.set('fieldLabels', {'qc_id': 'no label', 'id': 'no label', 'eventid': 'no label', 'siteareaid': 'no label', 'createdbyid': 'no label', 'updatedbyid': 'no label', 'status': 'no label', 'lengthinmetres': 'no label', 'widthinmetres': 'no label', 'itemisedpercentage': 'no label', 'litres': 'no label', 'kilos': 'no label', 'externalid': 'no label', 'createdon': 'no label', 'updatedon': 'no label', });
-lyr_Collections_Point_3.set('fieldLabels', {'qc_id': 'no label', 'id': 'no label', 'eventid': 'no label', 'siteareaid': 'no label', 'createdbyid': 'no label', 'updatedbyid': 'no label', 'status': 'no label', 'lengthinmetres': 'no label', 'widthinmetres': 'no label', 'itemisedpercentage': 'no label', 'litres': 'no label', 'kilos': 'no label', 'externalid': 'no label', 'createdon': 'no label', 'updatedon': 'no label', });
-lyr_Collections_Point_3.on('precompose', function(evt) {
+lyr_GoogleSatelliteHybrid_0.setVisible(true);lyr_Centroids_1.setVisible(true);lyr_Collections_Point_2.setVisible(true);
+var layersList = [lyr_GoogleSatelliteHybrid_0,lyr_Centroids_1,lyr_Collections_Point_2];
+lyr_Centroids_1.set('fieldAliases', {'Id': 'Id', 'EventId': 'EventId', 'SiteAreaId': 'SiteAreaId', 'CreatedById': 'CreatedById', 'UpdatedById': 'UpdatedById', 'Status': 'Status', 'LengthInMetres': 'LengthInMetres', 'WidthInMetres': 'WidthInMetres', 'ItemisedPercentage': 'ItemisedPercentage', 'Litres': 'Litres', 'Kilos': 'Kilos', 'ExternalId': 'ExternalId', 'CreatedOn': 'CreatedOn', 'UpdatedOn': 'UpdatedOn', });
+lyr_Collections_Point_2.set('fieldAliases', {'Id': 'Id', 'EventId': 'EventId', 'SiteAreaId': 'SiteAreaId', 'CreatedById': 'CreatedById', 'UpdatedById': 'UpdatedById', 'Status': 'Status', 'LengthInMetres': 'LengthInMetres', 'WidthInMetres': 'WidthInMetres', 'ItemisedPercentage': 'ItemisedPercentage', 'Litres': 'Litres', 'Kilos': 'Kilos', 'ExternalId': 'ExternalId', 'CreatedOn': 'CreatedOn', 'UpdatedOn': 'UpdatedOn', });
+lyr_Centroids_1.set('fieldImages', {'Id': 'Range', 'EventId': 'Range', 'SiteAreaId': 'Range', 'CreatedById': 'Range', 'UpdatedById': 'Range', 'Status': 'Range', 'LengthInMetres': 'Range', 'WidthInMetres': 'Range', 'ItemisedPercentage': 'TextEdit', 'Litres': 'TextEdit', 'Kilos': 'TextEdit', 'ExternalId': 'Range', 'CreatedOn': 'DateTime', 'UpdatedOn': 'DateTime', });
+lyr_Collections_Point_2.set('fieldImages', {'Id': 'TextEdit', 'EventId': 'Range', 'SiteAreaId': 'Range', 'CreatedById': 'Range', 'UpdatedById': 'Range', 'Status': 'Range', 'LengthInMetres': 'Range', 'WidthInMetres': 'Range', 'ItemisedPercentage': 'TextEdit', 'Litres': 'TextEdit', 'Kilos': 'TextEdit', 'ExternalId': 'Range', 'CreatedOn': 'DateTime', 'UpdatedOn': 'DateTime', });
+lyr_Centroids_1.set('fieldLabels', {'Id': 'hidden field', 'EventId': 'hidden field', 'SiteAreaId': 'hidden field', 'CreatedById': 'hidden field', 'UpdatedById': 'hidden field', 'Status': 'hidden field', 'LengthInMetres': 'hidden field', 'WidthInMetres': 'hidden field', 'ItemisedPercentage': 'hidden field', 'Litres': 'inline label - visible with data', 'Kilos': 'inline label - visible with data', 'ExternalId': 'hidden field', 'CreatedOn': 'hidden field', 'UpdatedOn': 'hidden field', });
+lyr_Collections_Point_2.set('fieldLabels', {'Id': 'hidden field', 'EventId': 'hidden field', 'SiteAreaId': 'hidden field', 'CreatedById': 'hidden field', 'UpdatedById': 'hidden field', 'Status': 'hidden field', 'LengthInMetres': 'hidden field', 'WidthInMetres': 'hidden field', 'ItemisedPercentage': 'hidden field', 'Litres': 'inline label - visible with data', 'Kilos': 'inline label - visible with data', 'ExternalId': 'hidden field', 'CreatedOn': 'hidden field', 'UpdatedOn': 'hidden field', });
+lyr_Collections_Point_2.on('precompose', function(evt) {
     evt.context.globalCompositeOperation = 'normal';
 });
